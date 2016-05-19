@@ -1,22 +1,22 @@
 #!/usr/bin/env python
 
 import re
+import sys
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 import ui_robot_control
 
-class RobotControl(QDialog,
+class RobotControl(QMainWindow,
                         ui_robot_control.Ui_RobotControl):
-    def __init__(self, text, parent=None):
+    def __init__(self, parent=None):
         super(RobotControl, self).__init__(parent)
-        self.__text = unicode(text)
-        self.__index = 0
         self.setupUi(self)
-        self.updateUi()
 
 def main():
-    robotcontrol = RobotControl()
-
+    app = QApplication(sys.argv)
+    form = RobotControl()
+    form.show()
+    app.exec_()
 
 if __name__ ==  "__main__":
     main()
